@@ -447,4 +447,4 @@ theme(plot.title = element_text(size = 25, margin = margin(b = 20, t = 5),
 
 ## Conclusion
 
-Blackjack is a well-known card game, and a Five Card Trick is often considered a rare occurence in the game. However, under the right circumstances, this probability is surprisingly high, as shown in a Monte Carlo simulation. With that being said, the simulation runs under some unrealistic assumptions, and hence the actual probability of this event can be significantly in reality.
+Blackjack is a well-known card game, and a Five Card Trick is often considered a rare occurence in the game. However, under the right circumstances, this probability is surprisingly high, as shown in this Monte Carlo simulation. With that being said, the simulation runs under some unrealistic assumptions, and hence the actual probability of this event can be significantly lower in reality.
