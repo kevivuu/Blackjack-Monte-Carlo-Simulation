@@ -27,6 +27,8 @@ The assumptions are as followed:
 
 - There is no money or incentives that may influence the players' decisions.
 
+
+
 ## Libraries and Functions
 
 We use tidyverse and dplyr for data wrangling, and ggplot2 and ggthemes for our visualizations. A total of 5 functions are created: 
@@ -40,6 +42,9 @@ We use tidyverse and dplyr for data wrangling, and ggplot2 and ggthemes for our 
 
 - **simind(np, exit)**: updates a dataframe created with play(np) to include TRUE if a player has a Five Card Trick, and FALSE otherwise.
 
+<details>
+
+<strong><summary>Show code</summary></strong>
 
 ```R
 library(tidyverse)
@@ -190,6 +195,8 @@ simind <- function(np, exit){
     return(players)
 }
 ```
+</details>
+
 
 ## Monte Carlo Simulation
 
@@ -203,6 +210,9 @@ We run a Monte Carlo Simulation to attempt to answer these questions. The simula
 
 Moreover, we make an assumption of players using the strategy of exiting given a certain value on their hands. In reality, this assumption can be quite accurate, especially for those who are unfamiliar Blackjack probabilities or card counting.
 
+<details>
+
+<strong><summary>Show code</summary></strong>
 
 ```R
 np <- c(2,4,6,8)
@@ -265,7 +275,11 @@ for (i in exit){
     }
 }
 ```
+</details>
 
+<details>
+
+<strong><summary>Show dataframes</summary></strong>
 
 ```R
 df_total
@@ -346,7 +360,7 @@ df_ind
 </tbody>
 </table>
 
-
+</details>
 
 ## How Often Does a Five Card Trick Happen?
 
@@ -358,6 +372,10 @@ However, according to the graph below, if 8 players all choose an exit value of 
 
 One thing that is quite non-intuitive is that the optimal strategy based on this graph is to stop drawing only once one has reached 21 points. Many Blackjack players often adopt a strategy of exiting at around 15 to 18, as they deem it safe enough to proceed. This is understandable because the former strategy is only optimal if the goal is to aim for a Five Card Trick, whereas in reality, most players use a strategy that helps them beat the dealer, hence the latter.
 
+
+<details>
+
+<strong><summary>Show code</summary></strong>
 
 ```R
 df_total %>% ggplot(aes(x = np, y = mean, group = factor(exit_value))) + 
@@ -379,7 +397,7 @@ theme(plot.title = element_text(size = 25, margin = margin(b = 25, t = 5),
                                   margin = margin(t = 25, b = 10))
      )
 ```
-
+</details>
 
     
 ![png](output_23_0.png)
@@ -394,6 +412,10 @@ The graph shows that although there are some variability, most players get aroun
 
 It is worth noting that there are still some discrepancies between the values (with differences of about +/- 0.2% from 5%) even when the number of trials for the Monte Carlo Simulation goes up to 50,000. This can either mean that 50,000 tries is still not enough to estimate the true probability, or there are some other factors that create some randomness in these values.
 
+
+<details>
+
+<strong><summary>Show code</summary></strong>
 
 ```R
 df_ind %>% mutate(avg = as.numeric(avg)) %>% group_by(np) %>% 
@@ -417,7 +439,7 @@ theme(plot.title = element_text(size = 25, margin = margin(b = 20, t = 5),
     )
 ```
 
-
+</details>
     
 ![png](output_26_0.png)
     
